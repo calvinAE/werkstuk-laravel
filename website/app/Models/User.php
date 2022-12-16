@@ -21,7 +21,7 @@ class User extends Authenticatable
         'name',
         'avatar',
         'birthday',
-        'isAdmin',
+        'role',
         'biography',
         'email',
         'password',
@@ -49,5 +49,9 @@ class User extends Authenticatable
     public function news()
     {
         return $this->hasMany('App\Models\News');
+    }
+    public function faq()
+    {
+        return $this->hasMany('App\Models\FAQ');
     }
 }
