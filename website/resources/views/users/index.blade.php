@@ -11,7 +11,7 @@
                     <th> Name</th>
                     <th>Date of Birth</th>
                     <th> Email </th>
-                    <th>Is admin</th>
+                    <th>Role</th>
 
                 </tr>
             </thead>
@@ -24,7 +24,7 @@
                         <td> {{ $user->name }} </td>
                         <td>{{ $user->birthday }}</td>
                         <td> {{ $user->email }} </td>
-                        <th> {{ $user->isAdmin }}</th>
+                        <th> {{ $user->role }}</th>
                         <th> <input class="btn btn-primary"type="submit" value="Make admin">
                         </th>
                         <th> <input class="btn btn-danger"type="submit" value="Remove">
