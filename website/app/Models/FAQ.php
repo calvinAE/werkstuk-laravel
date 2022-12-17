@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class News extends Model
+class FAQ extends Model
 {
-    public $timestamps = false;
-
+    use HasFactory;
+    protected $table = 'faqs';
 
 
     public function user()
