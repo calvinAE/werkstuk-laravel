@@ -27,12 +27,13 @@
                     </x-nav-link>
                 </div>
                 @auth
-
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('users')" :active="request()->routeIs('users.index')">
-                            {{ __('Users') }}
-                        </x-nav-link>
-                    </div>
+                    @if (Auth::user()->role == 'admin')
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('users')" :active="request()->routeIs('users.index')">
+                                {{ __('Users') }}
+                            </x-nav-link>
+                        </div>
+                    @endif
                 @endauth
 
             </div>
