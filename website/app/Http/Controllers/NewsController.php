@@ -6,13 +6,14 @@ use App\Models\News;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class NewsController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'detail']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
     public function index()
@@ -21,10 +22,10 @@ class NewsController extends Controller
         return view('news.index', compact('news'));
     }
 
-    public function detail($id)
+    public function show($id)
     {
         $news = News::findOrFail($id);
-        return view('news.detail', compact('newsItem'));
+        return view('news.detail', compact('news'));
     }
 
 
@@ -51,5 +52,14 @@ class NewsController extends Controller
 
         $news->save();
         return redirect()->route('news.index')->with('status', 'News added');
+    }
+
+    public function destroy($id)
+    {
+        $news = News::find($id);
+        $news->delete();
+
+
+        return Redirect::route('news.index')->with('status', 'News has been deleted');
     }
 }
