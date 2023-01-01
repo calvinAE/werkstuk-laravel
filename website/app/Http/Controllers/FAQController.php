@@ -16,6 +16,7 @@ class FAQController extends Controller
     public function index()
     {
         $faq = FAQ::All();
+
         return view('faq.index', compact('faq'));
     }
 
@@ -30,14 +31,17 @@ class FAQController extends Controller
 
         $validated = $request->validate([
             'question' => 'required',
+            'category' => 'required',
             'answer' => 'required',
         ]);
 
         $faq = new FAQ();
         $faq->user_id = Auth::user()->id;
         $faq->question = $validated['question'];
+        $faq->category = $validated['category'];
         $faq->answer = $validated['answer'];
 
         $faq->save();
+        return redirect()->route('faq.index')->with('status', 'FAQ added');
     }
 }
