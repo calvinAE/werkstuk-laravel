@@ -18,4 +18,10 @@ class UserController extends Controller
         $users = User::All();
         return view('users.index', compact('users'));
     }
+
+    public function makeAdmin($id)
+    {
+        $user = User::findOrFail($id);
+        $user->role = "admin";
+    }
 }

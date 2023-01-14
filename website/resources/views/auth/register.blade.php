@@ -7,7 +7,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
             @csrf
 
             <!-- Name -->
@@ -54,7 +54,7 @@
 
             <div class="mt-4">
                 <x-input-label for="avatar" :value="__('Profile picture')" />
-                <x-text-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" :value="old('avatar')"
+                <x-file-input id="avatar" class="block mt-1 w-full" type="file" name="avatar" :value="old('avatar')"
                     required />
                 <x-input-error :messages="$errors->get('avatar')" class="mt-2" />
             </div>
