@@ -15,7 +15,7 @@
                     style="min-width:260px; margin-bottom:40px; max-width:500px; min-height:300px; box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;">
                     <a href="{{ route('news.show', $newsItem->id) }}" class="card-body">
                         <h1 class="card-title" style="font-size: 30px; font-weight:bold; ">{{ $newsItem->title }}</h1>
-                        <img src="{{ 'data:image/png;base64,' . base64_encode($newsItem->cover_img) }}" alt="cover image">
+                        <img src="{{ asset('storage/news/'.$newsItem->cover_img) }}">
                         <p class="card-text">{{ $newsItem->content }}</p>
                         <small>{{ 'Author: ' . $newsItem->user->name }}
                         </small><br>

@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-6">
-                <form method="POST" action="{{ route('news.store') }}" enctype="multipart/form-data">
+            <div class="col-4">
+                <form method="POST" class="mt-4" action="{{ route('news.store') }}" enctype="multipart/form-data">
                     @csrf
                     @if ($errors->any())
                         <div class="alert alert-danger">

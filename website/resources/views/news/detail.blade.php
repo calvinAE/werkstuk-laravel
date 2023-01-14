@@ -1,13 +1,11 @@
 @extends('layouts.app')
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-8">
+        <div class="col-5">
             <div class="card">
-
                 <div class="card-body">
-
                     <h1 class="card-title" style="font-size: 30px; font-weight:bold; ">{{ $news->title }}</h1>
-                    <img src="{{ 'data:image/png;base64,' . base64_encode($news->cover_img) }}" alt="cover image">
+                    <img src="{{ asset('storage/news/'.$news->cover_img) }}">
                     <p class="card-text">{{ $news->content }}</p>
                     <small>{{ 'Author: ' . $news->user->name }}
                     </small><br>
@@ -20,8 +18,8 @@
                                 <button type="submit" style="margin: 5px; float: right;" class="btn btn-danger float-right"><i
                                         class="bi bi-trash"></i></button>
                             </form>
-                            <button type="submit" style="margin: 5px; float: right;" class="btn btn-success float-right"><i
-                                    class="bi bi-pencil"></i></button>
+                            <a type="submit" href="{{ route('news.edit', $news->id) }}" style="margin: 5px; float: right;" class="btn btn-success float-right"><i
+                                    class="bi bi-pencil"></i></a>
                         @endif
                     @endauth
                 </div>
