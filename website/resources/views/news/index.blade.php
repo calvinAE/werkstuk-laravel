@@ -3,11 +3,15 @@
     <div class="row justify-content-center">
         <h1 class="fs-2 m-4" style="text-align: center">News overview</h1>
 
+            @auth
+                @if (Auth::user()->role == 'admin')
         <div class="col-10">
             <button type="button" style="margin-bottom: 10px; float: right;"
                 onclick="location.href='{{ url('/news/create') }}'" class="btn btn-success float-right">New
                 Post</button>
-        </div>
+            </div>
+                @endif
+            @endauth
 
         @foreach ($news as $newsItem)
             <div class="col-md-5">
