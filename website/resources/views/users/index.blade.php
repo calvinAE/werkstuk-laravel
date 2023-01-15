@@ -24,7 +24,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td> {{ $user->id }} </td>
-                        <td> <img src="{{ Storage::url('users/'.$user->image) }}" alt="{{ $user->name }}">
+                        <td> <img style="width:35px;" src="{{ Storage::url('users/'.$user->avatar) }}" alt="{{ $user->name }}">
                         </td>
                         <td> {{ $user->name }} </td>
                         <td>{{ $user->birthday }}</td>

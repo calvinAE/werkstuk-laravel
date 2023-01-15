@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
         \App\Models\User::factory()->create([
             'name' => 'Admin',
             'email' => 'admin@ehb.be',
-            'avatar' => '',
+            'avatar' => 'admin.png',
             'password' => Hash::make('Password!321'),
             'role' => 'admin',
             'birthday' => '2000-12-1',
