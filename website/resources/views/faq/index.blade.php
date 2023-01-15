@@ -10,7 +10,7 @@
             @endif
             @auth
                 @if (Auth::user()->role == 'admin')
-                    <button type="button" onclick="location.href='{{ url('/faq/create') }}'" class="btn btn-success m-1">Add
+                    <button type="button" onclick="location.href='{{ url('/faq/create') }}'" class="btn btn-success m-1 float-end">Add
                         Question</button>
                 @endif
             @endauth
