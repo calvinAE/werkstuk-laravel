@@ -13,11 +13,15 @@ class FAQController extends Controller
         $this->middleware('auth', ['except' => ['index']]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $faq = FAQ::All();
+        $allFAQ = FAQ::All();
+        $category = $request->category;
+        $faq = FAQ::when($category, function($query) use ($category){
+            return $query->where('category', $category);
+        })->get();
 
-        return view('faq.index', compact('faq'));
+        return view('faq.index')->with(compact('allFAQ', 'faq'));
     }
 
 
@@ -43,5 +47,13 @@ class FAQController extends Controller
 
         $faq->save();
         return redirect()->route('faq.index')->with('status', 'FAQ added');
+    }
+
+    public function delete($id){
+
+        $user = FAQ::findOrFail($id);
+        $user->delete();
+        return redirect()->route('faq.index')->with('status', 'FAQ removed');
+
     }
 }
