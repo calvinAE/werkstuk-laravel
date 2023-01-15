@@ -23,5 +23,14 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->role = "admin";
+
+        return redirect()->back()->with('success', `User $user->name is now admin`);
+    }
+
+    public function removeUser($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->back()->with('deleted', `User $user->name has been removed`);
     }
 }

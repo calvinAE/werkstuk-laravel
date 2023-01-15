@@ -3,6 +3,11 @@
     <div class="row justify-content-center">
 
         <p class="h1" style="text-align: center; margin:10px;">users</p>
+            @if (session('success'))
+              <div class="alert alert-success">
+                {{ session('success') }}
+              </div>
+            @endif
         <table>
             <thead>
                 <tr>
@@ -25,9 +30,19 @@
                         <td>{{ $user->birthday }}</td>
                         <td> {{ $user->email }} </td>
                         <th> {{ $user->role }}</th>
-                        <th> <input class="btn btn-primary"type="submit" value="Make admin">
+                        <th><form action="{{route('makeAdmin', $user->id)}}" method="POST" style="display: inline" class="">
+                                @csrf
+                                <div class="ml-5">
+                                <input class="btn btn-primary"type="submit" value="Make admin">
+                                </div>
+                               </form>
                         </th>
-                        <th> <input class="btn btn-danger"type="submit" value="Remove">
+                        <th> <form action="{{route('removeUser', $user->id)}}" method="POST" style="display: inline" class="">
+                                @csrf
+                                <div class="ml-5">
+                               <input class="btn btn-danger"type="submit" value="Remove">
+                                </div>
+                               </form>
                         </th>
                     </tr>
                 @endforeach
