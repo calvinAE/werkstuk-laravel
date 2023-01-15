@@ -19,7 +19,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td> {{ $user->id }} </td>
-                        <td> <img style="width: 15%;" src=" {{ 'data:image/png;base64,' . base64_encode($user->avatar) }}" />
+                        <td> <img src="{{ Storage::url('users/'.$user->image) }}" alt="{{ $user->name }}">
                         </td>
                         <td> {{ $user->name }} </td>
                         <td>{{ $user->birthday }}</td>
